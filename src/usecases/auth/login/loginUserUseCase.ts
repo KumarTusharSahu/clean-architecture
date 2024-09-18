@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import userRepository from '../repositories/userRepository';
+import userRepository from '../../../repositories/userRepository';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret_key';
 

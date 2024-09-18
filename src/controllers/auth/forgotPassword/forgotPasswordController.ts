@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import ForgotPasswordUseCase from '../usecases/forgotPasswordUseCase';
+import ForgotPasswordUseCase from '../../../usecases/auth/forgotPassword/forgotPasswordUseCase';
 
 class ForgotPasswordController {
   async handleForgotPassword(req: Request, res: Response): Promise<void> {

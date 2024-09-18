@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import loginUserUseCase from '../usecases/loginUserUseCase';
+import loginUserUseCase from '../../../usecases/auth//login/loginUserUseCase';
 
 class LoginUserController {
   async handleUserLogin(req: Request, res: Response) {
@@ -7,8 +7,9 @@ class LoginUserController {
       const { username, password } = req.body;
       const { token } = await loginUserUseCase.execute(username, password);
       res.status(200).json({ token });
-    } catch (error) {
-      res.status(400).json({ error: error });
+    } catch (error: any) {
+      // Send specific error message back to the client
+      res.status(401).json({ message: error.message }); // 401 Unauthorized for invalid login
     }
   }
 }

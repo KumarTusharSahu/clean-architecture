@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
-import User from '../entities/user';
-import userRepository from '../repositories/userRepository';
-import { IUser } from '../entities/user';
+import User from '../../../entities/user';
+import userRepository from '../../../repositories/userRepository';
+import { IUser } from '../../../entities/user';
 
 class RegisterUserUseCase {
   async execute(username: string, password: string, email: string,): Promise<IUser> {

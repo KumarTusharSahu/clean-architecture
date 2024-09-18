@@ -1,11 +1,16 @@
 import { Router } from 'express';
-import RegisterUserController from '../controllers/registerUserController';
-import ForgotPasswordController from '../controllers/forgotPasswordController';
-import ResetPasswordController from '../controllers/resetPasswordController';
-import loginUserController from '../controllers/loginUserController';
+// import RegisterUserController from '../controllers/registerUserController';
+import RegisterUserController from '../controllers/auth/register/registerUserController';
+// import ForgotPasswordController from '../controllers/auth/forgotPassword/forgotPasswordController';
+import ForgotPasswordController from '../controllers/auth/forgotPassword/forgotPasswordController';
+// import ResetPasswordController from '../controllers/resetPasswordController';
+import ResetPasswordController from '../controllers/auth/reset/resetPasswordController';
+// import loginUserController from '../controllers/auth/login/loginUserController';
+import loginUserController from '../controllers/auth/login/loginUserController';
 
 import validate from '../middlewares/validationMiddleware';
 import loginSchema from '../validations/loginValidation'; 
+import resetSchema from '../validations/resetValidation';
 
 const router = Router();
 
@@ -19,6 +24,6 @@ router.post('/login', loginUserController.handleUserLogin);
 router.post('/forgot-password', ForgotPasswordController.handleForgotPassword);
 
 // Route to reset the password using the token
-router.post('/reset-password/:id', ResetPasswordController.handleResetPassword);
+router.post('/reset-password/:id', validate(resetSchema), ResetPasswordController.handleResetPassword);
 
 export default router;

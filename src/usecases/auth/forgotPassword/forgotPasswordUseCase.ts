@@ -1,6 +1,6 @@
 import crypto from 'crypto';
 import nodemailer from 'nodemailer';
-import userRepository from '../repositories/userRepository';
+import userRepository from '../../../repositories/userRepository';
 
 const transporter = nodemailer.createTransport({
   service: "Gmail",
