@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import connectDB from './config/db';
 import userRoutes from './routes/userRoutes';
 import dotenv from 'dotenv';
@@ -11,7 +11,6 @@ app.use(express.json());
 app.use('/api/users', userRoutes);
 
 const PORT = process.env.PORT || 5000;
-
 connectDB();
 
 app.listen(PORT, () => {

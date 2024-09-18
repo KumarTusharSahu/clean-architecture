@@ -1,14 +1,15 @@
 import { Request, Response } from 'express';
-import registerUserUseCase from '../usecases/registerUserUseCase';
+import UserService from '../services/userService';
 
 class RegisterUserController {
-  async handle(req: Request, res: Response) {
+  async handleRegisterUser(req: Request, res: Response): Promise<void> {
     try {
-      const { username, password } = req.body;
-      const user = await registerUserUseCase.execute(username, password);
-      res.status(201).json({ user });
+      const { username, password, email } = req.body; // Ensure email is here
+      console.log(req.body);
+      const user = await UserService.register(username, password, email);
+      res.status(201).json(user);
     } catch (error) {
-      res.status(400).json({ error: error });
+      res.status(400).json({ message: error });
     }
   }
 }
