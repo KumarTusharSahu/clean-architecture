@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const db_1 = __importDefault(require("./config/db"));
 const userRoutes_1 = __importDefault(require("./routes/userRoutes"));
+const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config(); // Load environment variables
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use('/api/users', userRoutes_1.default);

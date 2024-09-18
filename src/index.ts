@@ -1,6 +1,9 @@
 import express from 'express';
 import connectDB from './config/db';
 import userRoutes from './routes/userRoutes';
+import dotenv from 'dotenv';
+
+dotenv.config(); // Load environment variables
 
 const app = express();
 
